@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ECharts,数据可视化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： JS代码var myChart = echarts.init(document.getElementById(&amp;apos;myEchatrs&amp;apos;)); // 指定图表的配置项和数据 v">
+<meta name="keywords" content="ECharts,数据可视化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用ECharts动态实现数据可视化">
+<meta property="og:url" content="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/index.html">
+<meta property="og:site_name" content="Desstiony&#39;s Blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： JS代码var myChart = echarts.init(document.getElementById(&amp;apos;myEchatrs&amp;apos;)); // 指定图表的配置项和数据 v">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
+<meta property="og:updated_time" content="2017-08-20T08:33:25.769Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用ECharts动态实现数据可视化">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： JS代码var myChart = echarts.init(document.getElementById(&amp;apos;myEchatrs&amp;apos;)); // 指定图表的配置项和数据 v">
+<meta name="twitter:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/"/>
+
+
+
+
+
+  <title>使用ECharts动态实现数据可视化 | Desstiony's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+  
+  
+    
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Desstiony's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">西囚</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="desstiony">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Desstiony's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用ECharts动态实现数据可视化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T15:54:05+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> &emsp;&emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上<a href="http://echarts.baidu.com/" target="_blank" rel="external">地址</a>;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。</p>
+<h3 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：<div align="center"></div></h3><p><img src="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg" width="400" height="400" alt="效果图"><br></p>
+<h3 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h3><pre><code>var myChart = echarts.init(document.getElementById(&apos;myEchatrs&apos;));
+// 指定图表的配置项和数据
+var option = {
+
+    tooltip: {
+        trigger: &apos;axis&apos;,//坐标轴触发提示框
+    },
+
+    legend: {    //图表上方的类别显示
+        show: true,
+        data: [&apos;总云量&apos;, &apos;厚云云量&apos;, &apos;薄云云量&apos;]
+    },
+
+    color: [
+        &apos;#FF3333&apos;,    //总云量曲线颜色
+        &apos;#53FF53&apos;,    //厚云云量曲线颜色
+        &apos;#B15BFF&apos;,    //薄云云量颜色
+    ],
+
+    xAxis: {
+        type: &apos;category&apos;,
+        data: [],    //先设置数据值为空，后面用Ajax获取动态数据填入
+    },
+
+    yAxis: [
+        {
+            //第一个（左边）Y轴，yAxisIndex为0
+            type: &apos;value&apos;,
+            name: &apos;云量&apos;,
+            /* max: 120,
+            min: -40, */
+            axisLabel: {
+                formatter: &apos;{value}&apos;    //控制输出格式
+            }
+        },
+    ],
+
+    series: [    //系列（内容）列表
+        {
+            name: &apos;总云量&apos;,
+            type: &apos;line&apos;,    //折线图
+            symbol: &apos;emptycircle&apos;,    //设置折线图中表示每个坐标点的符号；emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
+            data: []
+        },
+
+        {
+            name: &apos;厚云云量&apos;,
+            type: &apos;line&apos;,
+            symbol: &apos;emptyrect&apos;,
+            data: []
+        },
+
+        {
+            name: &apos;薄云云量&apos;,
+            type: &apos;line&apos;,
+            symbol: &apos;emptydiamond&apos;,
+            data: []
+        },
+    ]
+};
+
+myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
+
+var total = [];        //总云量数组（存放服务器返回的所有温度值）
+var thick = [];        //厚云云量数组
+var thin = [];        //薄云云量数组
+var dates = [];        //时间数组
+var cloudinfo;
+var datas = [];
+
+$.ajax({
+    type: &quot;post&quot;,
+    async: true,
+    url: &quot;/user/showtoday&quot;,
+    data: {},
+    dataType: &quot;json&quot;,
+    contentType: &quot;application/json&quot;,
+    success: function (data) {
+    cloudinfo = data.cloudinfos;
+
+        if (data != null) {
+            for (var i = 0; i &lt; cloudinfo.length; i++) {
+                total.push(cloudinfo[i].total_amount);
+                thick.push(cloudinfo[i].thick_amount);
+                thin.push(cloudinfo[i].thin_amount);
+                dates.push(cloudinfo[i].time);
+            }
+            myChart.hideLoading();    //隐藏加载动画
+            myChart.setOption({        //载入数据
+                xAxis: {
+                    data: dates    //填入X轴数据
+                },
+                series: [    //填入系列（内容）数据
+                    {
+                        name: &apos;总云量&apos;,
+                        data: total
+                    },
+                    {
+                        name: &apos;厚云云量&apos;,
+                        data: thick
+                    },
+                    {
+                        name: &apos;薄云云量&apos;,
+                        data: thin
+                    },
+                ]
+            });
+        }
+        else {
+            //when data is null
+            alert(&quot;图表请求数据为空，可能服务器暂未录入近五天的观测数据，您可以稍后再试！&quot;);
+            myChart.hideLoading();
+        }
+    },
+    error: function (errorMsg) {
+        alert(&quot;图表请求数据失败，可能是服务器开小差了&quot;);
+        myChart.hideLoading();
+    }
+})
+myChart.setOption(option);    //载入图表
+</code></pre><h3 id="后台代码"><a href="#后台代码" class="headerlink" title="后台代码"></a>后台代码</h3><p>(ssm框架)此处只展示了controller的部分代码:</p>
+<pre><code>/**
+ *@Author desstiony [www.desstiony.com]
+ *@Date 2017/8/5 15:30
+ *@Description 查询当天所有数据返回json对象(fastjson)
+ */
+@RequestMapping(&quot;/showtoday&quot;)
+@ResponseBody
+public User getTodayData(HttpServletRequest request){
+    User user = (User)request.getSession().getAttribute(&quot;userinfo&quot;);
+    int cid = user.getCid();
+    User todaydata = userService.selectToday(cid);
+    return todaydata;
+}
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用echarts框架，配合后台提供的接口，利用ajax动态请求后台获取数据，使用fastjson将数据转化为json数组返回。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ECharts/" rel="tag"># ECharts</a>
+          
+            <a href="/tags/数据可视化/" rel="tag"># 数据可视化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="desstiony" />
+          <p class="site-author-name" itemprop="name">desstiony</p>
+           
+              <p class="site-description motion-element" itemprop="description">探索未知以分享 记录一直以备忘</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果图："><span class="nav-number">1.</span> <span class="nav-text">效果图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS代码"><span class="nav-number">2.</span> <span class="nav-text">JS代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台代码"><span class="nav-number">3.</span> <span class="nav-text">后台代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">desstiony</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
