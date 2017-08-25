@@ -93,19 +93,19 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： JS代码var myChart = echarts.init(document.getElementById(&amp;apos;myEchatrs&amp;apos;)); // 指定图表的配置项和数据 v">
+<meta name="description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
 <meta name="keywords" content="ECharts,数据可视化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用ECharts动态实现数据可视化">
 <meta property="og:url" content="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/index.html">
 <meta property="og:site_name" content="Desstiony&#39;s Blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： JS代码var myChart = echarts.init(document.getElementById(&amp;apos;myEchatrs&amp;apos;)); // 指定图表的配置项和数据 v">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
-<meta property="og:updated_time" content="2017-08-20T08:33:25.769Z">
+<meta property="og:updated_time" content="2017-08-25T01:42:05.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用ECharts动态实现数据可视化">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： JS代码var myChart = echarts.init(document.getElementById(&amp;apos;myEchatrs&amp;apos;)); // 指定图表的配置项和数据 v">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
 <meta name="twitter:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
 
 
@@ -146,6 +146,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fb3ff819262c4792ea78bfbf6940fa29";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -372,7 +382,11 @@
       
         <p> &emsp;&emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上<a href="http://echarts.baidu.com/" target="_blank" rel="external">地址</a>;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。</p>
 <h3 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：<div align="center"></div></h3><p><img src="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg" width="400" height="400" alt="效果图"><br></p>
-<h3 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h3><pre><code>var myChart = echarts.init(document.getElementById(&apos;myEchatrs&apos;));
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>HTML
+&lt;script src=&quot;/echarts.js&quot;&gt;&lt;/script&gt;        //引入echarts库
+&lt;div id=&quot;myEcharts&quot;&gt;&lt;/div&gt;                //定义图表显示的div
+JS
+var myChart = echarts.init(document.getElementById(&apos;myEchatrs&apos;));
 // 指定图表的配置项和数据
 var option = {
 
@@ -434,64 +448,68 @@ var option = {
 };
 
 myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
+function ajaxRequest()(){
+    var total = [];        //总云量数组（存放服务器返回的所有温度值）
+    var thick = [];        //厚云云量数组
+    var thin = [];        //薄云云量数组
+    var dates = [];        //时间数组
+    var cloudinfo;
+    var datas = [];
+    $.ajax({
+        type: &quot;post&quot;,
+        async: true,
+        url: &quot;/user/showtoday&quot;,
+        data: {},
+        dataType: &quot;json&quot;,
+        contentType: &quot;application/json&quot;,
+        success: function (data) {
+        cloudinfo = data.cloudinfos;
 
-var total = [];        //总云量数组（存放服务器返回的所有温度值）
-var thick = [];        //厚云云量数组
-var thin = [];        //薄云云量数组
-var dates = [];        //时间数组
-var cloudinfo;
-var datas = [];
-
-$.ajax({
-    type: &quot;post&quot;,
-    async: true,
-    url: &quot;/user/showtoday&quot;,
-    data: {},
-    dataType: &quot;json&quot;,
-    contentType: &quot;application/json&quot;,
-    success: function (data) {
-    cloudinfo = data.cloudinfos;
-
-        if (data != null) {
-            for (var i = 0; i &lt; cloudinfo.length; i++) {
-                total.push(cloudinfo[i].total_amount);
-                thick.push(cloudinfo[i].thick_amount);
-                thin.push(cloudinfo[i].thin_amount);
-                dates.push(cloudinfo[i].time);
+            if (data != null) {
+                for (var i = 0; i &lt; cloudinfo.length; i++) {
+                    total.push(cloudinfo[i].total_amount);
+                    thick.push(cloudinfo[i].thick_amount);
+                    thin.push(cloudinfo[i].thin_amount);
+                    dates.push(cloudinfo[i].time);
+                }
+                myChart.hideLoading();    //隐藏加载动画
+                myChart.setOption({        //载入数据
+                    xAxis: {
+                        data: dates    //填入X轴数据
+                    },
+                    series: [    //填入系列（内容）数据
+                        {
+                            name: &apos;总云量&apos;,
+                            data: total
+                        },
+                        {
+                            name: &apos;厚云云量&apos;,
+                            data: thick
+                        },
+                        {
+                            name: &apos;薄云云量&apos;,
+                            data: thin
+                        },
+                    ]
+                });
             }
-            myChart.hideLoading();    //隐藏加载动画
-            myChart.setOption({        //载入数据
-                xAxis: {
-                    data: dates    //填入X轴数据
-                },
-                series: [    //填入系列（内容）数据
-                    {
-                        name: &apos;总云量&apos;,
-                        data: total
-                    },
-                    {
-                        name: &apos;厚云云量&apos;,
-                        data: thick
-                    },
-                    {
-                        name: &apos;薄云云量&apos;,
-                        data: thin
-                    },
-                ]
-            });
-        }
-        else {
-            //when data is null
-            alert(&quot;图表请求数据为空，可能服务器暂未录入近五天的观测数据，您可以稍后再试！&quot;);
+            else {
+                //when data is null
+                alert(&quot;图表请求数据为空，可能服务器暂未录入近五天的观测数据，您可以稍后再试！&quot;);
+                myChart.hideLoading();
+            }
+        },
+        error: function (errorMsg) {
+            alert(&quot;图表请求数据失败，可能是服务器开小差了&quot;);
             myChart.hideLoading();
         }
-    },
-    error: function (errorMsg) {
-        alert(&quot;图表请求数据失败，可能是服务器开小差了&quot;);
-        myChart.hideLoading();
+    })
+    setTimeout(ajaxRequest, 30000);//30秒请求一个
     }
-})
-myChart.setOption(option);    //载入图表
+    $(document).ready(function () {
+            setTimeout(ajaxRequest, 0);//页面加载立即执行
+    });
+    myChart.setOption(option);    //载入图表
 </code></pre><h3 id="后台代码"><a href="#后台代码" class="headerlink" title="后台代码"></a>后台代码</h3><p>(ssm框架)此处只展示了controller的部分代码:</p>
 <pre><code>/**
  *@Author desstiony [www.desstiony.com]
@@ -632,7 +650,7 @@ public User getTodayData(HttpServletRequest request){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -643,7 +661,7 @@ public User getTodayData(HttpServletRequest request){
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -654,7 +672,7 @@ public User getTodayData(HttpServletRequest request){
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -689,7 +707,7 @@ public User getTodayData(HttpServletRequest request){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果图："><span class="nav-number">1.</span> <span class="nav-text">效果图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS代码"><span class="nav-number">2.</span> <span class="nav-text">JS代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台代码"><span class="nav-number">3.</span> <span class="nav-text">后台代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果图："><span class="nav-number">1.</span> <span class="nav-text">效果图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台代码"><span class="nav-number">3.</span> <span class="nav-text">后台代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
