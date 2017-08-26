@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ECharts,数据可视化," />
+  <meta name="keywords" content="nginx,负载均衡," />
 
 
 
@@ -108,20 +108,24 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
-<meta name="keywords" content="ECharts,数据可视化">
+<meta name="description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）简单理解为，依次轮流给予服务。 常用架构图单机Tomcat优点：开发简单，易于部署缺点">
+<meta name="keywords" content="nginx,负载均衡">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用ECharts动态实现数据可视化">
-<meta property="og:url" content="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/index.html">
+<meta property="og:title" content="负载均衡Nginx（一）">
+<meta property="og:url" content="desstiony.github.io/2017/08/25/负载均衡Nginx(一)/index.html">
 <meta property="og:site_name" content="Desstiony&#39;s Blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
+<meta property="og:description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）简单理解为，依次轮流给予服务。 常用架构图单机Tomcat优点：开发简单，易于部署缺点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
-<meta property="og:updated_time" content="2017-08-25T01:42:05.897Z">
+<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8D%95%E6%9C%BAtomcat%E6%9E%B6%E6%9E%841.png">
+<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%A4%9ATomcat+DNS%E8%BD%AE%E8%AF%A2%E6%9E%B6%E6%9E%841.png">
+<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%9E%B6%E6%9E%841.png">
+<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A11.png">
+<meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87+DNS%E8%BD%AE%E8%AF%A2--%E9%AB%98%E5%8F%AF%E7%94%A81.png">
+<meta property="og:updated_time" content="2017-08-26T01:28:10.011Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用ECharts动态实现数据可视化">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
-<meta name="twitter:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
+<meta name="twitter:title" content="负载均衡Nginx（一）">
+<meta name="twitter:description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）简单理解为，依次轮流给予服务。 常用架构图单机Tomcat优点：开发简单，易于部署缺点">
+<meta name="twitter:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8D%95%E6%9C%BAtomcat%E6%9E%B6%E6%9E%841.png">
 
 
 
@@ -149,13 +153,13 @@
 
 
 
-  <link rel="canonical" href="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/"/>
+  <link rel="canonical" href="desstiony.github.io/2017/08/25/负载均衡Nginx(一)/"/>
 
 
 
 
 
-  <title>使用ECharts动态实现数据可视化 | Desstiony's Blog</title>
+  <title>负载均衡Nginx（一） | Desstiony's Blog</title>
   
 
 
@@ -312,7 +316,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/">
+    <link itemprop="mainEntityOfPage" href="desstiony.github.io/2017/08/25/负载均衡Nginx(一)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="desstiony">
@@ -329,7 +333,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用ECharts动态实现数据可视化</h1>
+          <h1 class="post-title" itemprop="name headline">负载均衡Nginx（一）</h1>
         
 
         <div class="post-meta">
@@ -341,8 +345,8 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T15:54:05+08:00">
-                2017-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T20:14:42+08:00">
+                2017-08-25
               </time>
             
 
@@ -364,8 +368,8 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
                   </a>
                 </span>
 
@@ -395,7 +399,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  682
+                  1,126
                 </span>
               
 
@@ -411,7 +415,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -429,151 +433,17 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
       
 
       
-        <p> &emsp;&emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上<a href="http://echarts.baidu.com/" target="_blank" rel="external">地址</a>;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。</p>
-<h3 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：<div align="center"></div></h3><p><img src="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg" width="400" height="400" alt="效果图"><br></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>HTML
-&lt;script src=&quot;/echarts.js&quot;&gt;&lt;/script&gt;        //引入echarts库
-&lt;div id=&quot;myEcharts&quot;&gt;&lt;/div&gt;                //定义图表显示的div
-JS
-var myChart = echarts.init(document.getElementById(&apos;myEchatrs&apos;));
-// 指定图表的配置项和数据
-var option = {
-
-    tooltip: {
-        trigger: &apos;axis&apos;,//坐标轴触发提示框
-    },
-
-    legend: {    //图表上方的类别显示
-        show: true,
-        data: [&apos;总云量&apos;, &apos;厚云云量&apos;, &apos;薄云云量&apos;]
-    },
-
-    color: [
-        &apos;#FF3333&apos;,    //总云量曲线颜色
-        &apos;#53FF53&apos;,    //厚云云量曲线颜色
-        &apos;#B15BFF&apos;,    //薄云云量颜色
-    ],
-
-    xAxis: {
-        type: &apos;category&apos;,
-        data: [],    //先设置数据值为空，后面用Ajax获取动态数据填入
-    },
-
-    yAxis: [
-        {
-            //第一个（左边）Y轴，yAxisIndex为0
-            type: &apos;value&apos;,
-            name: &apos;云量&apos;,
-            /* max: 120,
-            min: -40, */
-            axisLabel: {
-                formatter: &apos;{value}&apos;    //控制输出格式
-            }
-        },
-    ],
-
-    series: [    //系列（内容）列表
-        {
-            name: &apos;总云量&apos;,
-            type: &apos;line&apos;,    //折线图
-            symbol: &apos;emptycircle&apos;,    //设置折线图中表示每个坐标点的符号；emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
-            data: []
-        },
-
-        {
-            name: &apos;厚云云量&apos;,
-            type: &apos;line&apos;,
-            symbol: &apos;emptyrect&apos;,
-            data: []
-        },
-
-        {
-            name: &apos;薄云云量&apos;,
-            type: &apos;line&apos;,
-            symbol: &apos;emptydiamond&apos;,
-            data: []
-        },
-    ]
-};
-
-myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
-function ajaxRequest()(){
-    var total = [];        //总云量数组（存放服务器返回的所有温度值）
-    var thick = [];        //厚云云量数组
-    var thin = [];        //薄云云量数组
-    var dates = [];        //时间数组
-    var cloudinfo;
-    var datas = [];
-    $.ajax({
-        type: &quot;post&quot;,
-        async: true,
-        url: &quot;/user/showtoday&quot;,
-        data: {},
-        dataType: &quot;json&quot;,
-        contentType: &quot;application/json&quot;,
-        success: function (data) {
-        cloudinfo = data.cloudinfos;
-
-            if (data != null) {
-                for (var i = 0; i &lt; cloudinfo.length; i++) {
-                    total.push(cloudinfo[i].total_amount);
-                    thick.push(cloudinfo[i].thick_amount);
-                    thin.push(cloudinfo[i].thin_amount);
-                    dates.push(cloudinfo[i].time);
-                }
-                myChart.hideLoading();    //隐藏加载动画
-                myChart.setOption({        //载入数据
-                    xAxis: {
-                        data: dates    //填入X轴数据
-                    },
-                    series: [    //填入系列（内容）数据
-                        {
-                            name: &apos;总云量&apos;,
-                            data: total
-                        },
-                        {
-                            name: &apos;厚云云量&apos;,
-                            data: thick
-                        },
-                        {
-                            name: &apos;薄云云量&apos;,
-                            data: thin
-                        },
-                    ]
-                });
-            }
-            else {
-                //when data is null
-                alert(&quot;图表请求数据为空，可能服务器暂未录入近五天的观测数据，您可以稍后再试！&quot;);
-                myChart.hideLoading();
-            }
-        },
-        error: function (errorMsg) {
-            alert(&quot;图表请求数据失败，可能是服务器开小差了&quot;);
-            myChart.hideLoading();
-        }
-    })
-    setTimeout(ajaxRequest, 30000);//30秒请求一个
-    }
-    $(document).ready(function () {
-            setTimeout(ajaxRequest, 0);//页面加载立即执行
-    });
-    myChart.setOption(option);    //载入图表
-</code></pre><h3 id="后台代码"><a href="#后台代码" class="headerlink" title="后台代码"></a>后台代码</h3><p>(ssm框架)此处只展示了controller的部分代码:</p>
-<pre><code>/**
- *@Author desstiony [www.desstiony.com]
- *@Date 2017/8/5 15:30
- *@Description 查询当天所有数据返回json对象(fastjson)
- */
-@RequestMapping(&quot;/showtoday&quot;)
-@ResponseBody
-public User getTodayData(HttpServletRequest request){
-    User user = (User)request.getSession().getAttribute(&quot;userinfo&quot;);
-    int cid = user.getCid();
-    User todaydata = userService.selectToday(cid);
-    return todaydata;
-}
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用echarts框架，配合后台提供的接口，利用ajax动态请求后台获取数据，使用fastjson将数据转化为json数组返回。</p>
+        <p>最近学习负载均衡的知识，特此记录一波，和大家分享。<br><br>简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）<br>简单理解为，依次轮流给予服务。</p>
+<h3 id="常用架构图"><a href="#常用架构图" class="headerlink" title="常用架构图"></a>常用架构图</h3><h4 id="单机Tomcat"><a href="#单机Tomcat" class="headerlink" title="单机Tomcat"></a>单机Tomcat</h4><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E5%8D%95%E6%9C%BAtomcat%E6%9E%B6%E6%9E%841.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>优点：开发简单，易于部署<br><br>缺点：单点故障，一旦出错，系统将不能访问。<br><br>经测试容量大概在200到300左右，经优化可能达到500</p>
+<h4 id="多Tomcat-DNS轮询架构"><a href="#多Tomcat-DNS轮询架构" class="headerlink" title="多Tomcat+DNS轮询架构"></a>多Tomcat+DNS轮询架构</h4><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E5%A4%9ATomcat+DNS%E8%BD%AE%E8%AF%A2%E6%9E%B6%E6%9E%841.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>相比单机Tomcat多了一份保障,一个Tomcat挂了还有一个可用，但还是不可取，比如轮询的效率问题,安全问题。黑客可以顺着请求摸到我们服务器的真实ip，这时有没有一个东西可用帮助我们负载均衡，分发请求,隐藏服务器ip呢？答案就是Nginx。</p>
+<h3 id="负载均衡架构"><a href="#负载均衡架构" class="headerlink" title="负载均衡架构"></a>负载均衡架构</h3><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%9E%B6%E6%9E%841.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>优点：屏蔽掉了服务器的IP，静态资源可以再Nginx上处理，有多种处理算法(后边会介绍)<br><br>缺点：单机故障,容错问题,一旦Nginx挂了,网站也就挂了(虽然Nginx一年可能都不会出一次问题)</p>
+<h3 id="双机热备负载均衡"><a href="#双机热备负载均衡" class="headerlink" title="双机热备负载均衡"></a>双机热备负载均衡</h3><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A11.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>优点：相比上一副架构，又多了一份保障，一个挂了还有另一个顶替，解决了单点故障的问题。<br><br>缺点：同一时刻只有一台工作，但是另一台又得随时待命，消耗大，浪费资源，两个都得开着,请求分发设备也有流量并发上限。</p>
+<h3 id="双机热备-DNS轮询–高可用"><a href="#双机热备-DNS轮询–高可用" class="headerlink" title="双机热备+DNS轮询–高可用"></a>双机热备+DNS轮询–高可用</h3><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87+DNS%E8%BD%AE%E8%AF%A2--%E9%AB%98%E5%8F%AF%E7%94%A81.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>请求来了以后，DNS轮询把请求分发到不同的Nginx上，理论上双机热备加DNS轮询可以承担很大的业务量并发，具体还要看公司的业务复杂度。<br><br>上边的几幅架构图都是业务比较简单的，具体还可以自己在扩展，此处不再累赘。</p>
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><p>硬件实现：F5 <br><br>   优点：非常快,可靠性高,并发量大<br><br>   缺点：价格昂贵，成本巨大，不方便</p>
+<h3 id="软件层面"><a href="#软件层面" class="headerlink" title="软件层面"></a>软件层面</h3><h4 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h4><p>linux的LVS,基于linux系统IP层面的负载均衡<br><br>优点：可靠性非常高,简单易用,并发量大<br><br>缺点：不能动静分离</p>
+<h4 id="apache-http-server"><a href="#apache-http-server" class="headerlink" title="apache http server"></a>apache http server</h4><p>nginx比起来效率一般般<br><br>所以本文介绍Nginx</p>
+<h4 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h4><p>Nginx是一个 Web服务器，也可以用作反向代理，负载均衡和 HTTP缓存。</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><p>反向代理，动静分离…<br><br>反向代理：在电脑网络中，反向代理是代理服务器的一种。它根据客户端的请求，从后端的服务器（如Web服务器）上获取资源，然后再将这些资源返回给客户端。与前向代理不同，前向代理作为一个媒介将互联网上获取的资源返回给相关联的客户端，而反向代理是在服务器端（如Web服务器）作为代理使用，而不是客户端。客户端通过前向代理可以访问很多不同的资源，而反向代理是很多客户端都通过它访问不同后端服务器上的资源，而不需要知道这些后端服务器的存在，而以为所有资源都来自于这个反向代理服务器（摘自维基百科）<br><br>简单理解：和正向代理比较理解，首先相信程序员都会科学的上网方式(以后可能会出一篇自己搭梯子的博客)，像VPN本地的网络通过代理节点向服务端请求数据，服务端不能直接知道你的本地真实IP,通俗的说就是用户隐藏自己找代理访问;同理反向代理，就是客户端请求服务端，服务端反向代理，隐藏自己的IP，通俗的说就是把服务器藏起来，客户端不知道服务器的真实IP。<br><br>动静分离：web应用中的静态资源（不和数据库打交道）可以放在Nginx上，让Nginx来给我们加载，动态资源放在Tomcat上，这样可以减少Tomcat的压力，让加载速度更快。</p>
 
       
     </div>
@@ -603,9 +473,9 @@ public User getTodayData(HttpServletRequest request){
       
         <div class="post-tags">
           
-            <a href="/tags/ECharts/" rel="tag"><i class="fa fa-tag"></i> ECharts</a>
+            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
           
-            <a href="/tags/数据可视化/" rel="tag"><i class="fa fa-tag"></i> 数据可视化</a>
+            <a href="/tags/负载均衡/" rel="tag"><i class="fa fa-tag"></i> 负载均衡</a>
           
         </div>
       
@@ -618,15 +488,15 @@ public User getTodayData(HttpServletRequest request){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/25/Git学习笔记/" rel="next" title="Git学习笔记">
+                <i class="fa fa-chevron-left"></i> Git学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/20/js循环生成tr/" rel="prev" title="js循环生成tr填充实时数据">
-                js循环生成tr填充实时数据 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -781,7 +651,7 @@ public User getTodayData(HttpServletRequest request){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果图："><span class="nav-number">1.</span> <span class="nav-text">效果图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台代码"><span class="nav-number">3.</span> <span class="nav-text">后台代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用架构图"><span class="nav-number">1.</span> <span class="nav-text">常用架构图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单机Tomcat"><span class="nav-number">1.1.</span> <span class="nav-text">单机Tomcat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多Tomcat-DNS轮询架构"><span class="nav-number">1.2.</span> <span class="nav-text">多Tomcat+DNS轮询架构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载均衡架构"><span class="nav-number">2.</span> <span class="nav-text">负载均衡架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双机热备负载均衡"><span class="nav-number">3.</span> <span class="nav-text">双机热备负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双机热备-DNS轮询–高可用"><span class="nav-number">4.</span> <span class="nav-text">双机热备+DNS轮询–高可用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件"><span class="nav-number">5.</span> <span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件层面"><span class="nav-number">6.</span> <span class="nav-text">软件层面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LVS"><span class="nav-number">6.1.</span> <span class="nav-text">LVS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apache-http-server"><span class="nav-number">6.2.</span> <span class="nav-text">apache http server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx"><span class="nav-number">6.3.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">6.3.1.</span> <span class="nav-text">特点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
