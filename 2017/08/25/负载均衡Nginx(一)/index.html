@@ -108,23 +108,23 @@
 
 
 
-<meta name="description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）简单理解为，依次轮流给予服务。 常用架构图单机Tomcat优点：开发简单，易于部署缺点">
+<meta name="description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。">
 <meta name="keywords" content="nginx,负载均衡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="负载均衡Nginx（一）">
 <meta property="og:url" content="desstiony.github.io/2017/08/25/负载均衡Nginx(一)/index.html">
 <meta property="og:site_name" content="Desstiony&#39;s Blog">
-<meta property="og:description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）简单理解为，依次轮流给予服务。 常用架构图单机Tomcat优点：开发简单，易于部署缺点">
+<meta property="og:description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8D%95%E6%9C%BAtomcat%E6%9E%B6%E6%9E%841.png">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%A4%9ATomcat+DNS%E8%BD%AE%E8%AF%A2%E6%9E%B6%E6%9E%841.png">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%9E%B6%E6%9E%841.png">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A11.png">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87+DNS%E8%BD%AE%E8%AF%A2--%E9%AB%98%E5%8F%AF%E7%94%A81.png">
-<meta property="og:updated_time" content="2017-08-26T03:16:48.108Z">
+<meta property="og:updated_time" content="2018-01-30T02:55:56.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="负载均衡Nginx（一）">
-<meta name="twitter:description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）简单理解为，依次轮流给予服务。 常用架构图单机Tomcat优点：开发简单，易于部署缺点">
+<meta name="twitter:description" content="最近学习负载均衡的知识，特此记录一波，和大家分享。简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。">
 <meta name="twitter:image" content="http://ouz53t28x.bkt.clouddn.com/%E5%8D%95%E6%9C%BAtomcat%E6%9E%B6%E6%9E%841.png">
 
 
@@ -426,7 +426,7 @@
       
 
       
-        <p>最近学习负载均衡的知识，特此记录一波，和大家分享。<br><br>简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。（摘自维基百科）<br>简单理解为，依次轮流给予服务。</p>
+        <p>最近学习负载均衡的知识，特此记录一波，和大家分享。<br><br>简单介绍下轮询：是一种CPU决策如何提供周边设备服务的方式，又称“程控输入输出”（Programmed I/O）。轮询法的概念是，由CPU定时发出询问，依序询问每一个周边设备是否需要其服务，有即给予服务，服务结束后再问下一个周边，接着不断周而复始。<br><a id="more"></a><br>（摘自维基百科）<br>简单理解为，依次轮流给予服务。</p>
 <h3 id="常用架构图"><a href="#常用架构图" class="headerlink" title="常用架构图"></a>常用架构图</h3><h4 id="单机Tomcat"><a href="#单机Tomcat" class="headerlink" title="单机Tomcat"></a>单机Tomcat</h4><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E5%8D%95%E6%9C%BAtomcat%E6%9E%B6%E6%9E%841.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>优点：开发简单，易于部署<br><br>缺点：单点故障，一旦出错，系统将不能访问。<br><br>经测试容量大概在200到300左右，经优化可能达到500</p>
 <h4 id="多Tomcat-DNS轮询架构"><a href="#多Tomcat-DNS轮询架构" class="headerlink" title="多Tomcat+DNS轮询架构"></a>多Tomcat+DNS轮询架构</h4><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E5%A4%9ATomcat+DNS%E8%BD%AE%E8%AF%A2%E6%9E%B6%E6%9E%841.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>相比单机Tomcat多了一份保障,一个Tomcat挂了还有一个可用，但还是不可取，比如轮询的效率问题,安全问题。黑客可以顺着请求摸到我们服务器的真实ip，这时有没有一个东西可用帮助我们负载均衡，分发请求,隐藏服务器ip呢？答案就是Nginx。</p>
 <h3 id="负载均衡架构"><a href="#负载均衡架构" class="headerlink" title="负载均衡架构"></a>负载均衡架构</h3><p><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%9E%B6%E6%9E%841.png" width="auto" height="auto" alt="单机Tomcat架构图"><br></div><br>优点：屏蔽掉了服务器的IP，静态资源可以再Nginx上处理，有多种处理算法(后边会介绍)<br><br>缺点：单机故障,容错问题,一旦Nginx挂了,网站也就挂了(虽然Nginx一年可能都不会出一次问题)</p>
