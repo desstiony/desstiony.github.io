@@ -108,19 +108,19 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
+<meta name="description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML 12&amp;lt;script src=&quot;/echarts.js&quot;&amp;gt;&amp;lt;/script&amp;gt;		//引入echarts库&amp;lt;div id=&quot;myEcharts&quot;&amp;gt;">
 <meta name="keywords" content="ECharts,数据可视化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用ECharts动态实现数据可视化">
 <meta property="og:url" content="desstiony.github.io/2017/08/20/使用ECharts动态实现数据可视化/index.html">
 <meta property="og:site_name" content="Desstiony&#39;s Blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML 12&amp;lt;script src=&quot;/echarts.js&quot;&amp;gt;&amp;lt;/script&amp;gt;		//引入echarts库&amp;lt;div id=&quot;myEcharts&quot;&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
-<meta property="og:updated_time" content="2017-08-25T01:42:05.897Z">
+<meta property="og:updated_time" content="2018-01-30T02:01:46.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用ECharts动态实现数据可视化">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML &amp;lt;script src=&amp;quot;/echarts.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;        //引入echarts库 &amp;lt;div id=">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上地址;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。 效果图： 代码HTML 12&amp;lt;script src=&quot;/echarts.js&quot;&amp;gt;&amp;lt;/script&amp;gt;		//引入echarts库&amp;lt;div id=&quot;myEcharts&quot;&amp;gt;">
 <meta name="twitter:image" content="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg">
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  682
+                  684
                 </span>
               
 
@@ -424,149 +424,13 @@
       
         <p> &emsp;&emsp;前段时间项目中需要用到动态的折线图来实现数据的可视化，于是谷歌一波发现百度有一个开源的ECharts。献上<a href="http://echarts.baidu.com/" target="_blank" rel="external">地址</a>;官网有详细的介绍，此处不再累赘，结合自己的需求展示下代码。</p>
 <h3 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：<div align="center"></div></h3><p><img src="http://ouz53t28x.bkt.clouddn.com/hexo/echarts.jpg" width="400" height="400" alt="效果图"><br></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>HTML
-&lt;script src=&quot;/echarts.js&quot;&gt;&lt;/script&gt;        //引入echarts库
-&lt;div id=&quot;myEcharts&quot;&gt;&lt;/div&gt;                //定义图表显示的div
-JS
-var myChart = echarts.init(document.getElementById(&apos;myEchatrs&apos;));
-// 指定图表的配置项和数据
-var option = {
-
-    tooltip: {
-        trigger: &apos;axis&apos;,//坐标轴触发提示框
-    },
-
-    legend: {    //图表上方的类别显示
-        show: true,
-        data: [&apos;总云量&apos;, &apos;厚云云量&apos;, &apos;薄云云量&apos;]
-    },
-
-    color: [
-        &apos;#FF3333&apos;,    //总云量曲线颜色
-        &apos;#53FF53&apos;,    //厚云云量曲线颜色
-        &apos;#B15BFF&apos;,    //薄云云量颜色
-    ],
-
-    xAxis: {
-        type: &apos;category&apos;,
-        data: [],    //先设置数据值为空，后面用Ajax获取动态数据填入
-    },
-
-    yAxis: [
-        {
-            //第一个（左边）Y轴，yAxisIndex为0
-            type: &apos;value&apos;,
-            name: &apos;云量&apos;,
-            /* max: 120,
-            min: -40, */
-            axisLabel: {
-                formatter: &apos;{value}&apos;    //控制输出格式
-            }
-        },
-    ],
-
-    series: [    //系列（内容）列表
-        {
-            name: &apos;总云量&apos;,
-            type: &apos;line&apos;,    //折线图
-            symbol: &apos;emptycircle&apos;,    //设置折线图中表示每个坐标点的符号；emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
-            data: []
-        },
-
-        {
-            name: &apos;厚云云量&apos;,
-            type: &apos;line&apos;,
-            symbol: &apos;emptyrect&apos;,
-            data: []
-        },
-
-        {
-            name: &apos;薄云云量&apos;,
-            type: &apos;line&apos;,
-            symbol: &apos;emptydiamond&apos;,
-            data: []
-        },
-    ]
-};
-
-myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
-function ajaxRequest()(){
-    var total = [];        //总云量数组（存放服务器返回的所有温度值）
-    var thick = [];        //厚云云量数组
-    var thin = [];        //薄云云量数组
-    var dates = [];        //时间数组
-    var cloudinfo;
-    var datas = [];
-    $.ajax({
-        type: &quot;post&quot;,
-        async: true,
-        url: &quot;/user/showtoday&quot;,
-        data: {},
-        dataType: &quot;json&quot;,
-        contentType: &quot;application/json&quot;,
-        success: function (data) {
-        cloudinfo = data.cloudinfos;
-
-            if (data != null) {
-                for (var i = 0; i &lt; cloudinfo.length; i++) {
-                    total.push(cloudinfo[i].total_amount);
-                    thick.push(cloudinfo[i].thick_amount);
-                    thin.push(cloudinfo[i].thin_amount);
-                    dates.push(cloudinfo[i].time);
-                }
-                myChart.hideLoading();    //隐藏加载动画
-                myChart.setOption({        //载入数据
-                    xAxis: {
-                        data: dates    //填入X轴数据
-                    },
-                    series: [    //填入系列（内容）数据
-                        {
-                            name: &apos;总云量&apos;,
-                            data: total
-                        },
-                        {
-                            name: &apos;厚云云量&apos;,
-                            data: thick
-                        },
-                        {
-                            name: &apos;薄云云量&apos;,
-                            data: thin
-                        },
-                    ]
-                });
-            }
-            else {
-                //when data is null
-                alert(&quot;图表请求数据为空，可能服务器暂未录入近五天的观测数据，您可以稍后再试！&quot;);
-                myChart.hideLoading();
-            }
-        },
-        error: function (errorMsg) {
-            alert(&quot;图表请求数据失败，可能是服务器开小差了&quot;);
-            myChart.hideLoading();
-        }
-    })
-    setTimeout(ajaxRequest, 30000);//30秒请求一个
-    }
-    $(document).ready(function () {
-            setTimeout(ajaxRequest, 0);//页面加载立即执行
-    });
-    myChart.setOption(option);    //载入图表
-</code></pre><h3 id="后台代码"><a href="#后台代码" class="headerlink" title="后台代码"></a>后台代码</h3><p>(ssm框架)此处只展示了controller的部分代码:</p>
-<pre><code>/**
- *@Author desstiony [www.desstiony.com]
- *@Date 2017/8/5 15:30
- *@Description 查询当天所有数据返回json对象(fastjson)
- */
-@RequestMapping(&quot;/showtoday&quot;)
-@ResponseBody
-public User getTodayData(HttpServletRequest request){
-    User user = (User)request.getSession().getAttribute(&quot;userinfo&quot;);
-    int cid = user.getCid();
-    User todaydata = userService.selectToday(cid);
-    return todaydata;
-}
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用echarts框架，配合后台提供的接口，利用ajax动态请求后台获取数据，使用fastjson将数据转化为json数组返回。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>HTML</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/echarts.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>		//引入echarts库</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myEcharts"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>				//定义图表显示的div</div></pre></td></tr></table></figure>
+<p>JS</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'myEchatrs'</span>));</div><div class="line"><span class="comment">// 指定图表的配置项和数据</span></div><div class="line"><span class="keyword">var</span> option = &#123;</div><div class="line"></div><div class="line">tooltip: &#123;</div><div class="line">    trigger: <span class="string">'axis'</span>,<span class="comment">//坐标轴触发提示框</span></div><div class="line">&#125;,</div><div class="line"></div><div class="line">legend: &#123;    <span class="comment">//图表上方的类别显示</span></div><div class="line">    show: <span class="literal">true</span>,</div><div class="line">    data: [<span class="string">'总云量'</span>, <span class="string">'厚云云量'</span>, <span class="string">'薄云云量'</span>]</div><div class="line">&#125;,</div><div class="line"></div><div class="line">color: [</div><div class="line">    <span class="string">'#FF3333'</span>,    <span class="comment">//总云量曲线颜色</span></div><div class="line">    <span class="string">'#53FF53'</span>,    <span class="comment">//厚云云量曲线颜色</span></div><div class="line">    <span class="string">'#B15BFF'</span>,    <span class="comment">//薄云云量颜色</span></div><div class="line">],</div><div class="line"></div><div class="line">xAxis: &#123;</div><div class="line">    <span class="keyword">type</span>: <span class="string">'category'</span>,</div><div class="line">    data: [],    <span class="comment">//先设置数据值为空，后面用Ajax获取动态数据填入</span></div><div class="line">&#125;,</div><div class="line"></div><div class="line">yAxis: [</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//第一个（左边）Y轴，yAxisIndex为0</span></div><div class="line">        <span class="keyword">type</span>: <span class="string">'value'</span>,</div><div class="line">        name: <span class="string">'云量'</span>,</div><div class="line">        <span class="comment">/* max: 120,</span></div><div class="line"><span class="comment">        min: -40, */</span></div><div class="line">        axisLabel: &#123;</div><div class="line">            formatter: <span class="string">'&#123;value&#125;'</span>    <span class="comment">//控制输出格式</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">],</div><div class="line"></div><div class="line">series: [    <span class="comment">//系列（内容）列表</span></div><div class="line">    &#123;</div><div class="line">        name: <span class="string">'总云量'</span>,</div><div class="line">        <span class="keyword">type</span>: <span class="string">'line'</span>,    <span class="comment">//折线图</span></div><div class="line">        symbol: <span class="string">'emptycircle'</span>,    <span class="comment">//设置折线图中表示每个坐标点的符号；emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形</span></div><div class="line">        data: []</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    &#123;</div><div class="line">        name: <span class="string">'厚云云量'</span>,</div><div class="line">        <span class="keyword">type</span>: <span class="string">'line'</span>,</div><div class="line">        symbol: <span class="string">'emptyrect'</span>,</div><div class="line">        data: []</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    &#123;</div><div class="line">        name: <span class="string">'薄云云量'</span>,</div><div class="line">        <span class="keyword">type</span>: <span class="string">'line'</span>,</div><div class="line">        symbol: <span class="string">'emptydiamond'</span>,</div><div class="line">        data: []</div><div class="line">    &#125;,</div><div class="line">]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">myChart.showLoading();    <span class="comment">//数据加载完之前先显示一段简单的loading动画</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajaxRequest</span>(<span class="params"></span>)(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> total = [];        <span class="comment">//总云量数组（存放服务器返回的所有温度值）</span></div><div class="line"><span class="keyword">var</span> thick = [];        <span class="comment">//厚云云量数组</span></div><div class="line"><span class="keyword">var</span> thin = [];        <span class="comment">//薄云云量数组</span></div><div class="line"><span class="keyword">var</span> dates = [];		<span class="comment">//时间数组</span></div><div class="line"><span class="keyword">var</span> cloudinfo;</div><div class="line"><span class="keyword">var</span> datas = [];</div><div class="line">$.ajax(&#123;</div><div class="line">    <span class="keyword">type</span>: <span class="string">"post"</span>,</div><div class="line">    <span class="keyword">async</span>: <span class="literal">true</span>,</div><div class="line">    url: <span class="string">"/user/showtoday"</span>,</div><div class="line">    data: &#123;&#125;,</div><div class="line">    dataType: <span class="string">"json"</span>,</div><div class="line">    contentType: <span class="string">"application/json"</span>,</div><div class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    cloudinfo = data.cloudinfos;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (data != <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cloudinfo.length; i++) &#123;</div><div class="line">                total.push(cloudinfo[i].total_amount);</div><div class="line">                thick.push(cloudinfo[i].thick_amount);</div><div class="line">                thin.push(cloudinfo[i].thin_amount);</div><div class="line">                dates.push(cloudinfo[i].time);</div><div class="line">            &#125;</div><div class="line">            myChart.hideLoading();    <span class="comment">//隐藏加载动画</span></div><div class="line">            myChart.setOption(&#123;        <span class="comment">//载入数据</span></div><div class="line">                xAxis: &#123;</div><div class="line">                    data: dates    <span class="comment">//填入X轴数据</span></div><div class="line">                &#125;,</div><div class="line">                series: [    <span class="comment">//填入系列（内容）数据</span></div><div class="line">                    &#123;</div><div class="line">                        name: <span class="string">'总云量'</span>,</div><div class="line">                        data: total</div><div class="line">                    &#125;,</div><div class="line">                    &#123;</div><div class="line">                        name: <span class="string">'厚云云量'</span>,</div><div class="line">                        data: thick</div><div class="line">                    &#125;,</div><div class="line">                    &#123;</div><div class="line">                        name: <span class="string">'薄云云量'</span>,</div><div class="line">                        data: thin</div><div class="line">                    &#125;,</div><div class="line">                ]</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//when data is null</span></div><div class="line">            alert(<span class="string">"图表请求数据为空，可能服务器暂未录入近五天的观测数据，您可以稍后再试！"</span>);</div><div class="line">            myChart.hideLoading();</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    error: <span class="function"><span class="keyword">function</span> (<span class="params">errorMsg</span>) </span>&#123;</div><div class="line">        alert(<span class="string">"图表请求数据失败，可能是服务器开小差了"</span>);</div><div class="line">        myChart.hideLoading();</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">setTimeout(ajaxRequest, <span class="number">30000</span>);<span class="comment">//30秒请求一个</span></div><div class="line">&#125;</div><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        setTimeout(ajaxRequest, <span class="number">0</span>);<span class="comment">//页面加载立即执行</span></div><div class="line">&#125;);</div><div class="line">myChart.setOption(option);    <span class="comment">//载入图表</span></div></pre></td></tr></table></figure>
+<h3 id="后台代码"><a href="#后台代码" class="headerlink" title="后台代码"></a>后台代码</h3><p>(ssm框架)此处只展示了controller的部分代码:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    *@Author desstiony [www.desstiony.com]</div><div class="line">    *@<span class="keyword">Date</span> <span class="number">2017</span>/<span class="number">8</span>/<span class="number">5</span> <span class="number">15</span>:<span class="number">30</span></div><div class="line">    *@Description 查询当天所有数据返回json对象(fastjson)</div><div class="line">    */</div><div class="line">@RequestMapping(<span class="string">"/showtoday"</span>)</div><div class="line">   @ResponseBody</div><div class="line">   public <span class="keyword">User</span> <span class="title">getTodayData</span>(HttpServletRequest request)&#123;</div><div class="line">       <span class="keyword">User</span> <span class="title">user</span> = (User)request.getSession().getAttribute(<span class="string">"userinfo"</span>);</div><div class="line">       int cid = user.getCid();</div><div class="line">       <span class="keyword">User</span> <span class="title">todaydata</span> = userService.selectToday(cid);</div><div class="line">       return todaydata;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用echarts框架，配合后台提供的接口，利用ajax动态请求后台获取数据，使用fastjson将数据转化为json数组返回。</p>
 
       
     </div>
@@ -796,8 +660,8 @@ public User getTodayData(HttpServletRequest request){
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/0.jpg">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/1.jpg">
 <meta property="og:image" content="http://ouz53t28x.bkt.clouddn.com/2.jpg">
-<meta property="og:updated_time" content="2017-08-25T01:49:49.506Z">
+<meta property="og:updated_time" content="2018-01-30T01:59:13.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习笔记">
 <meta name="twitter:description" content="本文参考廖雪峰老师的博客，学习过程中特此整理记录，以备查阅使用，不适用新手学习git，推荐学习廖雪峰老师的博客，详细透彻,我等楷模。 Git的诞生(膜拜Linus大佬)很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。 Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linu">
@@ -438,79 +438,23 @@
 <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>工作区：本地你创建的一个用来存放版本控制的文件夹。<br><br>版本库（Repository)：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。（git commit即提交到版本库）<br><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD<br><br>暂存区：git add即添加文件到暂存区。<br><br>图解:</p>
 <div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/0.jpg" width="500" height="300" alt="git"><br></div><br>git add 后<br><br><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/1.jpg" width="500" height="300" alt="git"><br></div><br>git commit后<br><br><div align="center"><br><img src="http://ouz53t28x.bkt.clouddn.com/2.jpg" width="500" height="300" alt="git"><br></div>
 
-<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot; //生成秘钥
-git add fileName   //把文件修改添加到暂存区
-git commit -m &quot;&quot;   //把暂存区的所有内容提交到当前分支,创建版本库时,git自动为我们创建了唯一的master分支
-git status         //查看状态
-git log               //查看日志
-git log --pretty=oneline     //简化查看
-git diff flieName        //显示不同
-git reset --hard id  //回退到id版本
-git reset --hard HEAD^ //回退到上个版本
-git reflog             //查看命令历史
-</code></pre><h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h3><p>当我们增加一个更改时,可能会遇到修改错误的情况,add此文件前或commint后,只要为push到远程仓库之前都有机会撤销修改,具体操作如下：</p>
+<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span><span class="comment"> //生成秘钥</span></div><div class="line">git <span class="built_in">add</span> fileName  <span class="comment"> //把文件修改添加到暂存区</span></div><div class="line">git commit -m <span class="string">""</span>  <span class="comment"> //把暂存区的所有内容提交到当前分支,创建版本库时,git自动为我们创建了唯一的master分支</span></div><div class="line">git status        <span class="comment"> //查看状态</span></div><div class="line">git <span class="built_in">log</span>			  <span class="comment"> //查看日志</span></div><div class="line">git <span class="built_in">log</span> <span class="comment">--pretty=oneline 	//简化查看</span></div><div class="line">git diff flieName	<span class="comment">	//显示不同</span></div><div class="line">git reset <span class="comment">--hard id  //回退到id版本</span></div><div class="line">git reset <span class="comment">--hard HEAD^ //回退到上个版本</span></div><div class="line">git reflog 		<span class="comment">	//查看命令历史</span></div></pre></td></tr></table></figure>
+<h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h3><p>当我们增加一个更改时,可能会遇到修改错误的情况,add此文件前或commint后,只要为push到远程仓库之前都有机会撤销修改,具体操作如下：</p>
 <p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
 <p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD file</code>，就回到了场景1，第二步按场景1操作。</p>
 <p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，<code>git reset --hard HEAD^</code>，不过前提是没有推送到远程库。</p>
-<h4 id="基本撤销命令："><a href="#基本撤销命令：" class="headerlink" title="基本撤销命令："></a>基本撤销命令：</h4><pre><code>git checkout -- fileName //回到最近一次git add或git commit的状态文件已修改未add到暂存区
-git checkout -- file  //可还原 撤销更改
-git reset HEAD file  //文件已修改，并add到暂存区未commit：
-git checkout -- file可还原
-</code></pre><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>实际开发中,会有一个master主分支,然后会拉一条dev(开发)分支,每个员工又会从dev分支上在拉取自己的分支,开发完成后提交到dev分支,测试完没有bug后才会合并到master分支,这个过程可能是项目助长来操作,至此完成一个版本的开发,下个版本的开发会重复之前的工作;master分支必须得保证是没有bug的分支,这样如果出现问题可以直接回退master分支的版本,避免产品出现问题.</p>
-<pre><code>git branch //查看分支
-git branch &lt;name&gt;//创建分支
-git checkout //切换分支
-git checkout -b //切换至创建的分支
-git merge &lt;name&gt; //合并分支
-git merge --no-ff -m &quot;merge with no-ff&quot; dev//--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并
-git branch -d &lt;name&gt; //删除分支
-git log --graph --pretty=oneline --abbrev-commit //显示分支历史修复bug时
-</code></pre><h4 id="场景1"><a href="#场景1" class="headerlink" title="场景1:"></a>场景1:<br></h4><p>dev分支发现bug,领导让你立即去修复这个bug,但是你手头工作没有完成.</p>
+<h4 id="基本撤销命令："><a href="#基本撤销命令：" class="headerlink" title="基本撤销命令："></a>基本撤销命令：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- fileName //回到最近一次git add或git commit的状态文件已修改未add到暂存区</span></div><div class="line">git checkout <span class="comment">-- file  //可还原 撤销更改</span></div><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> <span class="keyword">file</span>  //文件已修改，并<span class="keyword">add</span>到暂存区未<span class="keyword">commit</span>：</div><div class="line">git checkout <span class="comment">-- file可还原</span></div></pre></td></tr></table></figure>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>实际开发中,会有一个master主分支,然后会拉一条dev(开发)分支,每个员工又会从dev分支上在拉取自己的分支,开发完成后提交到dev分支,测试完没有bug后才会合并到master分支,这个过程可能是项目助长来操作,至此完成一个版本的开发,下个版本的开发会重复之前的工作;master分支必须得保证是没有bug的分支,这样如果出现问题可以直接回退master分支的版本,避免产品出现问题.<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git branch <span class="comment">//查看分支</span></div><div class="line">git branch &lt;name&gt;<span class="comment">//创建分支</span></div><div class="line">git checkout <span class="comment">//切换分支</span></div><div class="line">git checkout -b <span class="comment">//切换至创建的分支</span></div><div class="line">git <span class="keyword">merge</span> &lt;name&gt; <span class="comment">//合并分支</span></div><div class="line">git <span class="keyword">merge</span> --<span class="keyword">no</span>-ff -<span class="keyword">m</span> <span class="string">"merge with no-ff"</span> dev<span class="comment">//--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并</span></div><div class="line">git branch -<span class="keyword">d</span> &lt;name&gt; <span class="comment">//删除分支</span></div><div class="line">git <span class="keyword">log</span> --<span class="keyword">graph</span> --pretty=oneline --abbrev-commit <span class="comment">//显示分支历史修复bug时</span></div></pre></td></tr></table></figure></p>
+<h4 id="场景1"><a href="#场景1" class="headerlink" title="场景1:"></a>场景1:<br></h4><p>dev分支发现bug,领导让你立即去修复这个bug,但是你手头工作没有完成.</p>
 <p>这时,我们会通过创建新的bug分支进行修复，然后合并，最后删除；<br>当手头工作没有完成时，先把工作现场<code>git stash</code>一下(保存暂停)，然后去修复bug，修复后， <code>git stash list</code>查看刚刚放下的工作现场 ,再<code>git stash pop</code>，回到工作现场。</p>
 <h3 id="远程推送"><a href="#远程推送" class="headerlink" title="远程推送"></a>远程推送</h3><p>本地新建的分支如果不推送到远程，对其他人就是不可见的,想推送需要先关联远程仓库。<br>查看远程库信息，使用<code>git remote -v</code>；<br><code>git remote add origin git@github.com:desstiony/learngit.git  //关联远程仓库</code></p>
 <p>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用<code>git pull</code>抓取远程的新提交；</p>
 <p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
 <p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>；</p>
 <p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突</p>
-<h4 id="场景1-1"><a href="#场景1-1" class="headerlink" title="场景1:"></a>场景1:<br></h4><p>本地仓库与github关联后,<code>git remote -v</code>查看远程仓库信息,发现关联了github,这时又想关联码云的仓库,可以如下操作:</p>
-<pre><code>/**
- * 首先删除github关联
- */
-git remote rm origin  
-/**
- * 然后分别添加github 码云关联
- * /
-git remote add origin git@gitee.com:desstiony/learngit.git //添加码云关联    
-git remote add github git@github.com:desstiony/learngit.git //添加github关联
-/**
- * 查看远程仓库信息
- * /
-git remote -v
-/**
- * 信息如下
- * /
-gitee    git@gitee.com:desstiony/learngit.git (fetch)
-gitee    git@gitee.com:desstiony/learngit.git (push)
-github    git@github.com:desstioiny/learngit.git (fetch)
-github    git@github.com:desstiony/learngit.git (push)
-/**
- * 推送操作
- * /
-git push github master  //推送至github
-git push gitee master    //推送至码云
-</code></pre><h3 id="自定义标签"><a href="#自定义标签" class="headerlink" title="自定义标签"></a>自定义标签</h3><pre><code>git tag &lt;name&gt;        //用于新建一个标签，默认为HEAD，也可以指定一个commit id；
-
-git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;    //可以指定标签信息；
-
-git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;    //可以用PGP签名标签；
-git tag``可以查看所有标签
-git push origin &lt;tagname&gt;       //可以推送一个本地标签；
-
-git push origin --tags            //可以推送全部未推送过的本地标签；
-
-git tag -d &lt;tagname&gt;            //可以删除一个本地标签；
-git push origin :refs/tags/&lt;tagname&gt;    //可以删除一个远程标签
-</code></pre><p>记录已知以备忘。</p>
+<h4 id="场景1-1"><a href="#场景1-1" class="headerlink" title="场景1:"></a>场景1:<br></h4><p>本地仓库与github关联后,<code>git remote -v</code>查看远程仓库信息,发现关联了github,这时又想关联码云的仓库,可以如下操作:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 首先删除github关联</div><div class="line"> *<span class="regexp">/</span></div><div class="line"><span class="regexp">git remote rm origin  </span></div><div class="line"><span class="regexp">/</span>**</div><div class="line"> * 然后分别添加github 码云关联</div><div class="line"> * <span class="regexp">/</span></div><div class="line"><span class="regexp">git remote add origin git@gitee.com:desstiony/learngit</span>.git /<span class="regexp">/添加码云关联	</span></div><div class="line"><span class="regexp">git remote add github git@github.com:desstiony/learngit</span>.git /<span class="regexp">/添加github关联</span></div><div class="line"><span class="regexp">/</span>**</div><div class="line"> * 查看远程仓库信息</div><div class="line"> * <span class="regexp">/</span></div><div class="line"><span class="regexp">git remote -v</span></div><div class="line"><span class="regexp">/</span>**</div><div class="line"> * 信息如下</div><div class="line"> * <span class="regexp">/</span></div><div class="line"><span class="regexp">gitee    git@gitee.com:desstiony/learngit</span>.git (fetch)</div><div class="line">gitee    git@gitee.<span class="symbol">com:</span>desstiony/learngit.git (push)</div><div class="line">github    git@github.<span class="symbol">com:</span>desstioiny/learngit.git (fetch)</div><div class="line">github    git@github.<span class="symbol">com:</span>desstiony/learngit.git (push)</div><div class="line">/**</div><div class="line"> * 推送操作</div><div class="line"> * <span class="regexp">/</span></div><div class="line"><span class="regexp">git push github master  /</span><span class="regexp">/推送至github</span></div><div class="line"><span class="regexp">git push gitee master	/</span><span class="regexp">/推送至码云</span></div></pre></td></tr></table></figure></p>
+<h3 id="自定义标签"><a href="#自定义标签" class="headerlink" title="自定义标签"></a>自定义标签</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">git tag <span class="params">&lt;name&gt;</span>		<span class="comment">//用于新建一个标签，默认为HEAD，也可以指定一个commit id；</span></div><div class="line"></div><div class="line">git tag -a <span class="params">&lt;tagname&gt;</span> -m <span class="string">"blablabla..."</span>	<span class="comment">//可以指定标签信息；</span></div><div class="line"></div><div class="line">git tag -s <span class="params">&lt;tagname&gt;</span> -m <span class="string">"blablabla..."</span>	<span class="comment">//可以用PGP签名标签；</span></div><div class="line">git tag``可以查看所有标签</div><div class="line">git push origin <span class="params">&lt;tagname&gt;</span>   	<span class="comment">//可以推送一个本地标签；</span></div><div class="line"></div><div class="line">git push origin --tags		    <span class="comment">//可以推送全部未推送过的本地标签；</span></div><div class="line"></div><div class="line">git tag -d <span class="params">&lt;tagname&gt;</span>		    <span class="comment">//可以删除一个本地标签；</span></div><div class="line">git push origin :refs<span class="meta-keyword">/tags/</span><span class="params">&lt;tagname&gt;</span>	<span class="comment">//可以删除一个远程标签</span></div></pre></td></tr></table></figure>
+<p>记录已知以备忘。</p>
 
       
     </div>
@@ -744,8 +688,8 @@ git push origin :refs/tags/&lt;tagname&gt;    //可以删除一个远程标签
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
