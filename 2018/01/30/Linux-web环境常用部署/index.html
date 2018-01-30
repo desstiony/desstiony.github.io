@@ -108,18 +108,18 @@
 
 
 
-<meta name="description" content="##Linux web环境常用部署特此记录一下方便日后查看，省去google的麻烦！">
+<meta name="description" content="Linux web环境常用部署特此记录一下方便日后查看，省去google的麻烦！">
 <meta name="keywords" content="web环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux web环境常用部署">
 <meta property="og:url" content="desstiony.github.io/2018/01/30/Linux-web环境常用部署/index.html">
 <meta property="og:site_name" content="Desstiony&#39;s Blog">
-<meta property="og:description" content="##Linux web环境常用部署特此记录一下方便日后查看，省去google的麻烦！">
+<meta property="og:description" content="Linux web环境常用部署特此记录一下方便日后查看，省去google的麻烦！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-30T03:27:38.503Z">
+<meta property="og:updated_time" content="2018-01-30T03:33:16.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux web环境常用部署">
-<meta name="twitter:description" content="##Linux web环境常用部署特此记录一下方便日后查看，省去google的麻烦！">
+<meta name="twitter:description" content="Linux web环境常用部署特此记录一下方便日后查看，省去google的麻烦！">
 
 
 
@@ -420,20 +420,11 @@
       
 
       
-        <p>##Linux web环境常用部署<br>特此记录一下方便日后查看，省去google的麻烦！<br><a id="more"></a></p>
+        <h3 id="Linux-web环境常用部署"><a href="#Linux-web环境常用部署" class="headerlink" title="Linux web环境常用部署"></a>Linux web环境常用部署</h3><p>特此记录一下方便日后查看，省去google的麻烦！<br><a id="more"></a></p>
 <h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf jdkname<span class="comment">;  解压jdk.tar</span></div></pre></td></tr></table></figure>
-<p>配置JDK环境变量:<br><code>vim /etc/profile //配置系统变量
-export JAVA_HOME=/~/~/jdk1.8.0_144 //jdk路径
-export PATH=$JAVA_HOME/bin:$PATH 
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-source /etc/profile //使生效</code></p>
-<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql:"></a>安装mysql:</h3><p><code>apt install mysql-server;
-中途会让你输入root的密码两次</code></p>
-<h4 id="安装完成后"><a href="#安装完成后" class="headerlink" title="安装完成后:"></a>安装完成后:<br></h4><p><code>mysql -uroot -p密码 进入mysql
-create database dbname;
-use dbname;
-source **/**.sql;  //sql文件路径
-完成导入数据库操作;</code></p>
+<p>配置JDK环境变量:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile /<span class="regexp">/配置系统变量</span></div><div class="line"><span class="regexp">export JAVA_HOME=/</span>~<span class="regexp">/~/jdk</span>1.<span class="number">8.0_144</span> /<span class="regexp">/jdk路径</span></div><div class="line"><span class="regexp">export PATH=$JAVA_HOME/bin</span>:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>/<span class="title">dt</span>.<span class="title">jar</span>:$<span class="title">JAVA_HOME</span>/<span class="title">lib</span>/<span class="title">tools</span>.<span class="title">jar</span></span></div><div class="line">source /etc/profile /<span class="regexp">/使生效</span></div></pre></td></tr></table></figure></p>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql:"></a>安装mysql:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt <span class="keyword">install</span> mysql-<span class="keyword">server</span>;</div><div class="line">中途会让你输入root的密码两次</div></pre></td></tr></table></figure>
+<h4 id="安装完成后"><a href="#安装完成后" class="headerlink" title="安装完成后:"></a>安装完成后:<br></h4><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码 进入mysql</div><div class="line">create database dbname<span class="comment">;</span></div><div class="line">use dbname<span class="comment">;</span></div><div class="line">source **/**.sql<span class="comment">;  //sql文件路径</span></div><div class="line">完成导入数据库操作<span class="comment">;</span></div></pre></td></tr></table></figure>
 <h4 id="如果远程无法连接"><a href="#如果远程无法连接" class="headerlink" title="如果远程无法连接:"></a>如果远程无法连接:<br></h4><blockquote>
 <p>1.使用命令<code>netstat -nlt | grep 3306</code>检查3306是否监听的是0.0.0.0;localhost.3306表示只有本地可以访问,此时<code>vim /etc/mysql/mysql.conf.d/mysqld.cnf</code>找到并修改为bind-address=0.0.0.0;<br><br>2.修改user表root的权限为%的远程连接用户.</p>
 </blockquote>
@@ -656,7 +647,7 @@ chmod +x *.sh 即可
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装mysql"><span class="nav-number">2.</span> <span class="nav-text">安装mysql:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装完成后"><span class="nav-number">2.1.</span> <span class="nav-text">安装完成后:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果远程无法连接"><span class="nav-number">2.2.</span> <span class="nav-text">如果远程无法连接:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">3.</span> <span class="nav-text">安装Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动tomcat"><span class="nav-number">3.1.</span> <span class="nav-text">启动tomcat</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置vsftp"><span class="nav-number">4.</span> <span class="nav-text">配置vsftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx源代码安装的启动"><span class="nav-number">5.</span> <span class="nav-text">nginx源代码安装的启动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-web环境常用部署"><span class="nav-number">1.</span> <span class="nav-text">Linux web环境常用部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装JDK"><span class="nav-number">2.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装mysql"><span class="nav-number">3.</span> <span class="nav-text">安装mysql:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装完成后"><span class="nav-number">3.1.</span> <span class="nav-text">安装完成后:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果远程无法连接"><span class="nav-number">3.2.</span> <span class="nav-text">如果远程无法连接:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">4.</span> <span class="nav-text">安装Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动tomcat"><span class="nav-number">4.1.</span> <span class="nav-text">启动tomcat</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置vsftp"><span class="nav-number">5.</span> <span class="nav-text">配置vsftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx源代码安装的启动"><span class="nav-number">6.</span> <span class="nav-text">nginx源代码安装的启动</span></a></li></ol></div>
             
 
           </div>
