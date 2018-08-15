@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="web环境," />
+  <meta name="keywords" content="C++,python,CMakeLists," />
 
 
 
@@ -108,18 +108,18 @@
 
 
 
-<meta name="description" content="特此记录一下方便日后查看，省去google的麻烦！">
-<meta name="keywords" content="web环境">
+<meta name="description" content="FirstIDE JetBrains CLion最近遇到c++里调用外置python脚本的需求，linux测试成功，windows CLion未成功，查看了官方文档：  Windows Python is built in Microsoft Visual C++; using other compilers may or may not work (though Borland seems to">
+<meta name="keywords" content="C++,python,CMakeLists">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux web环境常用部署">
-<meta property="og:url" content="desstiony.github.io/2018/01/30/Linux-web环境常用部署/index.html">
+<meta property="og:title" content="C++调用python.md">
+<meta property="og:url" content="desstiony.github.io/2018/08/15/C++调用python/index.html">
 <meta property="og:site_name" content="Desstiony&#39;s Blog">
-<meta property="og:description" content="特此记录一下方便日后查看，省去google的麻烦！">
+<meta property="og:description" content="FirstIDE JetBrains CLion最近遇到c++里调用外置python脚本的需求，linux测试成功，windows CLion未成功，查看了官方文档：  Windows Python is built in Microsoft Visual C++; using other compilers may or may not work (though Borland seems to">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-30T05:26:23.859Z">
+<meta property="og:updated_time" content="2018-08-15T02:17:58.571Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux web环境常用部署">
-<meta name="twitter:description" content="特此记录一下方便日后查看，省去google的麻烦！">
+<meta name="twitter:title" content="C++调用python.md">
+<meta name="twitter:description" content="FirstIDE JetBrains CLion最近遇到c++里调用外置python脚本的需求，linux测试成功，windows CLion未成功，查看了官方文档：  Windows Python is built in Microsoft Visual C++; using other compilers may or may not work (though Borland seems to">
 
 
 
@@ -147,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="desstiony.github.io/2018/01/30/Linux-web环境常用部署/"/>
+  <link rel="canonical" href="desstiony.github.io/2018/08/15/C++调用python/"/>
 
 
 
 
 
-  <title>Linux web环境常用部署 | Desstiony's Blog</title>
+  <title>C++调用python.md | Desstiony's Blog</title>
   
 
 
@@ -313,7 +313,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="desstiony.github.io/2018/01/30/Linux-web环境常用部署/">
+    <link itemprop="mainEntityOfPage" href="desstiony.github.io/2018/08/15/C++调用python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="desstiony">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux web环境常用部署</h1>
+          <h1 class="post-title" itemprop="name headline">C++调用python.md</h1>
         
 
         <div class="post-meta">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T11:26:34+08:00">
-                2018-01-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-15T10:12:55+08:00">
+                2018-08-15
               </time>
             
 
@@ -365,8 +365,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web环境/" itemprop="url" rel="index">
-                    <span itemprop="name">web环境</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">Reading time</span>
                 
                 <span title="Reading time">
-                  3
+                  1
                 </span>
               
             </div>
@@ -417,28 +417,14 @@
       
 
       
-        <p>特此记录一下方便日后查看，省去google的麻烦！<br><a id="more"></a></p>
-<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf jdkname<span class="comment">;  解压jdk.tar</span></div></pre></td></tr></table></figure>
-<p>配置JDK环境变量:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile /<span class="regexp">/配置系统变量</span></div><div class="line"><span class="regexp">export JAVA_HOME=/</span>~<span class="regexp">/~/jdk</span>1.<span class="number">8.0_144</span> /<span class="regexp">/jdk路径</span></div><div class="line"><span class="regexp">export PATH=$JAVA_HOME/bin</span>:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>/<span class="title">dt</span>.<span class="title">jar</span>:$<span class="title">JAVA_HOME</span>/<span class="title">lib</span>/<span class="title">tools</span>.<span class="title">jar</span></span></div><div class="line">source /etc/profile /<span class="regexp">/使生效</span></div></pre></td></tr></table></figure></p>
-<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql:"></a>安装mysql:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt <span class="keyword">install</span> mysql-<span class="keyword">server</span>;</div><div class="line">中途会让你输入root的密码两次</div></pre></td></tr></table></figure>
-<h4 id="安装完成后"><a href="#安装完成后" class="headerlink" title="安装完成后:"></a>安装完成后:<br></h4><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码 进入mysql</div><div class="line">create database dbname<span class="comment">;</span></div><div class="line">use dbname<span class="comment">;</span></div><div class="line">source **/**.sql<span class="comment">;  //sql文件路径</span></div><div class="line">完成导入数据库操作<span class="comment">;</span></div></pre></td></tr></table></figure>
-<h4 id="如果远程无法连接"><a href="#如果远程无法连接" class="headerlink" title="如果远程无法连接:"></a>如果远程无法连接:<br></h4><blockquote>
-<p>1.使用命令<code>netstat -nlt | grep 3306</code>检查3306是否监听的是0.0.0.0;localhost.3306表示只有本地可以访问,此时<code>vim /etc/mysql/mysql.conf.d/mysqld.cnf</code>找到并修改为bind-address=0.0.0.0;<br><br>2.修改user表root的权限为%的远程连接用户.</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码;</div><div class="line"><span class="keyword">use</span> mysql;</div><div class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host=<span class="string">'%'</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>; //设置root用户可以在任意ip登陆mysql</div><div class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;  //刷新权限表</div><div class="line"><span class="keyword">select</span> host,<span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span>; //查看user表的host和user;</div></pre></td></tr></table></figure>
+        <h2 id="First"><a href="#First" class="headerlink" title="First"></a>First</h2><p>IDE JetBrains CLion<br>最近遇到c++里调用外置python脚本的需求，linux测试成功，windows CLion未成功，查看了官方文档：</p>
 <blockquote>
-<p>3.使用<code>netstat -nlt | grep 3306</code>若3306监听的是0.0.0.0表示外部IP可以访问;<br><br>4.重启mysql服务 <code>service mysql restart</code></p>
+<p>Windows Python is built in Microsoft Visual C++; using other compilers may or may not work (though Borland seems to). The rest of this section is MSVC++ specific.<br>When creating DLLs in Windows, you must pass pythonXY.lib to the linker. To build two DLLs, spam and ni (which uses C functions found in spam), you could use these commands:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cl /LD /I/python/include spam<span class="selector-class">.c</span> ../libs/pythonXY.lib</div><div class="line">cl /LD /I/python/include ni<span class="selector-class">.c</span> spam<span class="selector-class">.lib</span> ../libs/pythonXY.lib</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3><p>官网下载Tomcat后上传到linux后,webapplication放在webapps目录下<br></p>
-<h4 id="启动tomcat"><a href="#启动tomcat" class="headerlink" title="启动tomcat"></a>启动tomcat</h4><p><code>cd ../bin
-./start.sh         //启动tomcat可能无法执行,原因为给.sh脚本添加可执行权限
-chmod +x *.sh 即可
-./shutdown.sh     //关闭tomcat</code></p>
-<p>替换webapplication时先关闭tomcat再操作,/conf  server.xml下配置自动更名为ROOT</p>
-<h3 id="配置vsftp"><a href="#配置vsftp" class="headerlink" title="配置vsftp"></a>配置vsftp</h3><figure class="highlight stan"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">apt update;</div><div class="line">apt install vsftpd;</div><div class="line">vim /etc/vsftpd.conf</div><div class="line">" <span class="comment">#禁止匿名访问</span></div><div class="line">anonymous_enable=NO</div><div class="line"><span class="comment">#接受本地用户</span></div><div class="line">local_enable=YES</div><div class="line"><span class="comment">#允许上传</span></div><div class="line">write_enable=YES</div><div class="line"><span class="comment">#用户只能访问限制的目录</span></div><div class="line">chroot_local_user=YES</div><div class="line"><span class="comment">#设置固定目录，在结尾添加。如果不添加这一行，各用户对应自己的目录，当然这个文件夹自己建</span></div><div class="line">local_root=/home/ftp "</div><div class="line">添加用户</div><div class="line">sudo useradd -d /home/ftp -M ftpuser</div><div class="line">sudo passwd ftpuser</div><div class="line">修改文件夹权限</div><div class="line">chmod a-w /home/ftp</div><div class="line">mkdir /home/ftp/<span class="title">data</span></div><div class="line">vim /etc/pam.d/vsftpd</div><div class="line">注释掉 <span class="comment">#auth required pam_shells.so</span></div><div class="line">sudo service vsftpd restart  <span class="comment">//重启生效</span></div><div class="line">错误:FileZilla - 服务器发回了不可路由的地址，使用服务器地址代替</div><div class="line">解决方式:</div><div class="line">更改FileZilla设置，【编辑】-&gt;【设置】-&gt;【连接】-&gt;【FTP】-&gt;【被动模式】，将“使用服务器的外部IP地址来代替”改为“退回到主动模式”即可。</div><div class="line">如果连接上了不能上传文件 chown ftpuser:ftpuser /home/ftp/</div><div class="line">chmod <span class="number">777</span> /home/ftp/<span class="title">data</span></div></pre></td></tr></table></figure>
-<h3 id="nginx源代码安装的启动"><a href="#nginx源代码安装的启动" class="headerlink" title="nginx源代码安装的启动"></a>nginx源代码安装的启动</h3><p>默认启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/nginx //进入nginx目录</span></div><div class="line"><span class="meta">$</span><span class="bash">sbin/nginx //运行启动文件</span></div></pre></td></tr></table></figure></p>
-<hr>
-<p>备忘</p>
+<p>相关资料：<a href="https://docs.python.org/2/extending/windows.html#building-on-windows" target="_blank" rel="external">https://docs.python.org/2/extending/windows.html#building-on-windows</a><br>CMmakeList.tex下设置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xxx.cpp头文件需要```#include &lt;python2.7/Python.h&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">cmake_minimum_required</span><span class="params">(VERSION <span class="number">3.12</span>)</span></span></div><div class="line"><span class="function"><span class="title">project</span><span class="params">(test)</span></span></div><div class="line"><span class="function"><span class="title">find_package</span><span class="params">(PythonLibs <span class="number">2.7</span> REQUIRED)</span></span></div><div class="line"><span class="function"><span class="title">include_directories</span><span class="params">($&#123;PYTHON_INCLUDE_DIRS&#125;)</span></span></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(CMAKE_CXX_STANDARD <span class="number">14</span>)</span></span></div><div class="line"><span class="function"><span class="title">add_executable</span><span class="params">(test main.cpp)</span></span></div><div class="line"><span class="function"><span class="title">target_link_libraries</span><span class="params">(test $&#123;PYTHON_LIBRARIES&#125;)</span></span></div></pre></td></tr></table></figure>
+<h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// Python initialize</span></div><div class="line">    Py_Initialize();</div><div class="line">    <span class="keyword">if</span> (!Py_IsInitialized())</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Python initialization failed!\n"</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    PyRun_SimpleString(<span class="string">"import sys"</span>);</div><div class="line">    PyRun_SimpleString(<span class="string">"sys.path.append('python file path')"</span>);</div><div class="line">    PyObject * pModule = PyImport_ImportModule(<span class="string">"python name，not has '.py' "</span>); </div><div class="line">    <span class="keyword">if</span> (!pModule)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt;<span class="string">"Cannot open Python file!\n"</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    PyObject * pFunc = PyObject_GetAttrString(pModule, <span class="string">"invoked by python method name"</span>);</div><div class="line">    <span class="keyword">if</span> (!pFunc)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to get this function!"</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line"><span class="comment">// Call HelloPython()</span></div><div class="line">     PyEval_CallObject(pFunc, <span class="literal">NULL</span>);</div><div class="line">    Py_DECREF(pFunc);</div><div class="line"><span class="comment">// Finalize</span></div><div class="line">    Py_Finalize();</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译运行即可 。</p>
 
       
     </div>
@@ -468,7 +454,11 @@ chmod +x *.sh 即可
       
         <div class="post-tags">
           
-            <a href="/tags/web环境/" rel="tag"><i class="fa fa-tag"></i> web环境</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/CMakeLists/" rel="tag"><i class="fa fa-tag"></i> CMakeLists</a>
           
         </div>
       
@@ -481,8 +471,8 @@ chmod +x *.sh 即可
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/30/nginx配置文件/" rel="next" title="nginx配置文件">
-                <i class="fa fa-chevron-left"></i> nginx配置文件
+              <a href="/2018/01/30/Linux-web环境常用部署/" rel="next" title="Linux web环境常用部署">
+                <i class="fa fa-chevron-left"></i> Linux web环境常用部署
               </a>
             
           </div>
@@ -490,10 +480,6 @@ chmod +x *.sh 即可
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/15/C++调用python/" rel="prev" title="C++调用python.md">
-                C++调用python.md <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -648,7 +634,7 @@ chmod +x *.sh 即可
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装mysql"><span class="nav-number">2.</span> <span class="nav-text">安装mysql:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装完成后"><span class="nav-number">2.1.</span> <span class="nav-text">安装完成后:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果远程无法连接"><span class="nav-number">2.2.</span> <span class="nav-text">如果远程无法连接:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">3.</span> <span class="nav-text">安装Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动tomcat"><span class="nav-number">3.1.</span> <span class="nav-text">启动tomcat</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置vsftp"><span class="nav-number">4.</span> <span class="nav-text">配置vsftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx源代码安装的启动"><span class="nav-number">5.</span> <span class="nav-text">nginx源代码安装的启动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#First"><span class="nav-number">1.</span> <span class="nav-text">First</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMakeLists-txt"><span class="nav-number">2.</span> <span class="nav-text">CMakeLists.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-cpp"><span class="nav-number">3.</span> <span class="nav-text">main.cpp</span></a></li></ol></div>
             
 
           </div>
