@@ -418,8 +418,8 @@
 
       
         <p>&emsp;&emsp;之前前端界面使用jsp，循环表格使用el表达式的forEach实现，这此项目中用的了velocity模板引擎。作为一个初级java程序员，js着实捉急，无奈来到<a href="http://www.w3school.com.cn/" target="_blank" rel="external">w3school</a>上一顿操作,遂记录之。<br><a id="more"></a></p>
-<h3 id="HEML"><a href="#HEML" class="headerlink" title="HEML"></a>HEML</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">html</div><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"myTable"</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">th</span>&gt;</span>时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">th</span>&gt;</span>状态<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">th</span>&gt;</span>温度<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajaxRequest</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">	$.ajax(&#123;</div><div class="line">        type: <span class="string">"post"</span>,</div><div class="line">        <span class="keyword">async</span>: <span class="literal">true</span>,</div><div class="line">        url: <span class="string">"/user/showtoday"</span>,</div><div class="line">        data: &#123;&#125;,</div><div class="line">        dataType: <span class="string">"json"</span>,</div><div class="line">        contentType: <span class="string">"application/json"</span>,</div><div class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">        cloudinfo = data.cloudinfos;</div><div class="line">		<span class="function"><span class="keyword">function</span> <span class="title">getRow</span>(<span class="params">row</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> tr = $(<span class="string">'&lt;tr&gt;&lt;/tr&gt;'</span>);</div><div class="line">            tr.append(<span class="string">'&lt;td"&gt;'</span> + row[<span class="string">"time"</span>] + <span class="string">'&lt;/td&gt;'</span>);</div><div class="line">            tr.append(<span class="string">'&lt;td"&gt;'</span> + row[<span class="string">"state"</span>] + <span class="string">'&lt;/td&gt;'</span>);</div><div class="line">            tr.append(<span class="string">'&lt;td"&gt;'</span> + row[<span class="string">"temperature"</span>] + <span class="string">'&lt;/td&gt;'</span>); </div><div class="line">            <span class="keyword">return</span> tr;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> tbody = $(<span class="string">'&lt;tbody&gt;&lt;/tbody&gt;'</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;cloudinfo.length;j++)&#123;</div><div class="line">            tbody.append(getRow(cloudinfo[j]));</div><div class="line">        &#125;</div><div class="line">        $(<span class="string">'#myTable tbody'</span>).replaceWith(tbody);</div><div class="line">	&#125;);</div><div class="line">	setTimeout(ajaxRequest, <span class="number">3000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="HEML"><a href="#HEML" class="headerlink" title="HEML"></a>HEML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">html</div><div class="line">&lt;table id=&quot;myTable&quot;&gt;</div><div class="line">         &lt;thead&gt;</div><div class="line">             &lt;tr&gt;</div><div class="line">                 &lt;th&gt;时间&lt;/th&gt;</div><div class="line">                 &lt;th&gt;状态&lt;/th&gt;</div><div class="line">                 &lt;th&gt;温度&lt;/th&gt;</div><div class="line">            &lt;/tr&gt;</div><div class="line">         &lt;/thead&gt;</div><div class="line">         &lt;tbody&gt;</div><div class="line">         &lt;/tbody&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure>
+<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">function ajaxRequest(params) &#123;</div><div class="line">	$.ajax(&#123;</div><div class="line">        type: &quot;post&quot;,</div><div class="line">        async: true,</div><div class="line">        url: &quot;/user/showtoday&quot;,</div><div class="line">        data: &#123;&#125;,</div><div class="line">        dataType: &quot;json&quot;,</div><div class="line">        contentType: &quot;application/json&quot;,</div><div class="line">        success: function (data) &#123;</div><div class="line">        cloudinfo = data.cloudinfos;</div><div class="line">		function getRow(row) &#123;</div><div class="line">            var tr = $(&apos;&lt;tr&gt;&lt;/tr&gt;&apos;);</div><div class="line">            tr.append(&apos;&lt;td&quot;&gt;&apos; + row[&quot;time&quot;] + &apos;&lt;/td&gt;&apos;);</div><div class="line">            tr.append(&apos;&lt;td&quot;&gt;&apos; + row[&quot;state&quot;] + &apos;&lt;/td&gt;&apos;);</div><div class="line">            tr.append(&apos;&lt;td&quot;&gt;&apos; + row[&quot;temperature&quot;] + &apos;&lt;/td&gt;&apos;); </div><div class="line">            return tr;</div><div class="line">        &#125;</div><div class="line">        var tbody = $(&apos;&lt;tbody&gt;&lt;/tbody&gt;&apos;);</div><div class="line">        for(var j=0; j&lt;cloudinfo.length;j++)&#123;</div><div class="line">            tbody.append(getRow(cloudinfo[j]));</div><div class="line">        &#125;</div><div class="line">        $(&apos;#myTable tbody&apos;).replaceWith(tbody);</div><div class="line">	&#125;);</div><div class="line">	setTimeout(ajaxRequest, 3000);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>记录已知以备忘!</p>
 
       
@@ -575,7 +575,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -586,7 +586,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -597,7 +597,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -656,7 +656,7 @@
 <div class="copyright" >
   
   &copy;  2017 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -678,7 +678,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.7k字</span>
+  <span class="post-count">博客全站共10.6k字</span>
 </div>
 
 

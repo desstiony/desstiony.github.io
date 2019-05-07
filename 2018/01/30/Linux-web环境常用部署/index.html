@@ -418,14 +418,14 @@
 
       
         <p>特此记录一下方便日后查看，省去google的麻烦！<br><a id="more"></a></p>
-<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf jdkname<span class="comment">;  解压jdk.tar</span></div></pre></td></tr></table></figure>
-<p>配置JDK环境变量:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile /<span class="regexp">/配置系统变量</span></div><div class="line"><span class="regexp">export JAVA_HOME=/</span>~<span class="regexp">/~/jdk</span>1.<span class="number">8.0_144</span> /<span class="regexp">/jdk路径</span></div><div class="line"><span class="regexp">export PATH=$JAVA_HOME/bin</span>:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>/<span class="title">dt</span>.<span class="title">jar</span>:$<span class="title">JAVA_HOME</span>/<span class="title">lib</span>/<span class="title">tools</span>.<span class="title">jar</span></span></div><div class="line">source /etc/profile /<span class="regexp">/使生效</span></div></pre></td></tr></table></figure></p>
-<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql:"></a>安装mysql:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt <span class="keyword">install</span> mysql-<span class="keyword">server</span>;</div><div class="line">中途会让你输入root的密码两次</div></pre></td></tr></table></figure>
-<h4 id="安装完成后"><a href="#安装完成后" class="headerlink" title="安装完成后:"></a>安装完成后:<br></h4><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码 进入mysql</div><div class="line">create database dbname<span class="comment">;</span></div><div class="line">use dbname<span class="comment">;</span></div><div class="line">source **/**.sql<span class="comment">;  //sql文件路径</span></div><div class="line">完成导入数据库操作<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf jdkname;  解压jdk.tar</div></pre></td></tr></table></figure>
+<p>配置JDK环境变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile //配置系统变量</div><div class="line">export JAVA_HOME=/~/~/jdk1.8.0_144 //jdk路径</div><div class="line">export PATH=$JAVA_HOME/bin:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</div><div class="line">source /etc/profile //使生效</div></pre></td></tr></table></figure></p>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql:"></a>安装mysql:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt install mysql-server;</div><div class="line">中途会让你输入root的密码两次</div></pre></td></tr></table></figure>
+<h4 id="安装完成后"><a href="#安装完成后" class="headerlink" title="安装完成后:"></a>安装完成后:<br></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码 进入mysql</div><div class="line">create database dbname;</div><div class="line">use dbname;</div><div class="line">source **/**.sql;  //sql文件路径</div><div class="line">完成导入数据库操作;</div></pre></td></tr></table></figure>
 <h4 id="如果远程无法连接"><a href="#如果远程无法连接" class="headerlink" title="如果远程无法连接:"></a>如果远程无法连接:<br></h4><blockquote>
 <p>1.使用命令<code>netstat -nlt | grep 3306</code>检查3306是否监听的是0.0.0.0;localhost.3306表示只有本地可以访问,此时<code>vim /etc/mysql/mysql.conf.d/mysqld.cnf</code>找到并修改为bind-address=0.0.0.0;<br><br>2.修改user表root的权限为%的远程连接用户.</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码;</div><div class="line"><span class="keyword">use</span> mysql;</div><div class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host=<span class="string">'%'</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>; //设置root用户可以在任意ip登陆mysql</div><div class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;  //刷新权限表</div><div class="line"><span class="keyword">select</span> host,<span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span>; //查看user表的host和user;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p密码;</div><div class="line">use mysql;</div><div class="line">update user set host=&apos;%&apos; where user=&apos;root&apos;; //设置root用户可以在任意ip登陆mysql</div><div class="line">flush privileges;  //刷新权限表</div><div class="line">select host,user from user; //查看user表的host和user;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>3.使用<code>netstat -nlt | grep 3306</code>若3306监听的是0.0.0.0表示外部IP可以访问;<br><br>4.重启mysql服务 <code>service mysql restart</code></p>
 </blockquote>
@@ -435,8 +435,8 @@
 chmod +x *.sh 即可
 ./shutdown.sh     //关闭tomcat</code></p>
 <p>替换webapplication时先关闭tomcat再操作,/conf  server.xml下配置自动更名为ROOT</p>
-<h3 id="配置vsftp"><a href="#配置vsftp" class="headerlink" title="配置vsftp"></a>配置vsftp</h3><figure class="highlight stan"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">apt update;</div><div class="line">apt install vsftpd;</div><div class="line">vim /etc/vsftpd.conf</div><div class="line">" <span class="comment">#禁止匿名访问</span></div><div class="line">anonymous_enable=NO</div><div class="line"><span class="comment">#接受本地用户</span></div><div class="line">local_enable=YES</div><div class="line"><span class="comment">#允许上传</span></div><div class="line">write_enable=YES</div><div class="line"><span class="comment">#用户只能访问限制的目录</span></div><div class="line">chroot_local_user=YES</div><div class="line"><span class="comment">#设置固定目录，在结尾添加。如果不添加这一行，各用户对应自己的目录，当然这个文件夹自己建</span></div><div class="line">local_root=/home/ftp "</div><div class="line">添加用户</div><div class="line">sudo useradd -d /home/ftp -M ftpuser</div><div class="line">sudo passwd ftpuser</div><div class="line">修改文件夹权限</div><div class="line">chmod a-w /home/ftp</div><div class="line">mkdir /home/ftp/<span class="title">data</span></div><div class="line">vim /etc/pam.d/vsftpd</div><div class="line">注释掉 <span class="comment">#auth required pam_shells.so</span></div><div class="line">sudo service vsftpd restart  <span class="comment">//重启生效</span></div><div class="line">错误:FileZilla - 服务器发回了不可路由的地址，使用服务器地址代替</div><div class="line">解决方式:</div><div class="line">更改FileZilla设置，【编辑】-&gt;【设置】-&gt;【连接】-&gt;【FTP】-&gt;【被动模式】，将“使用服务器的外部IP地址来代替”改为“退回到主动模式”即可。</div><div class="line">如果连接上了不能上传文件 chown ftpuser:ftpuser /home/ftp/</div><div class="line">chmod <span class="number">777</span> /home/ftp/<span class="title">data</span></div></pre></td></tr></table></figure>
-<h3 id="nginx源代码安装的启动"><a href="#nginx源代码安装的启动" class="headerlink" title="nginx源代码安装的启动"></a>nginx源代码安装的启动</h3><p>默认启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/nginx //进入nginx目录</span></div><div class="line"><span class="meta">$</span><span class="bash">sbin/nginx //运行启动文件</span></div></pre></td></tr></table></figure></p>
+<h3 id="配置vsftp"><a href="#配置vsftp" class="headerlink" title="配置vsftp"></a>配置vsftp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">apt update;</div><div class="line">apt install vsftpd;</div><div class="line">vim /etc/vsftpd.conf</div><div class="line">&quot; #禁止匿名访问</div><div class="line">anonymous_enable=NO</div><div class="line">#接受本地用户</div><div class="line">local_enable=YES</div><div class="line">#允许上传</div><div class="line">write_enable=YES</div><div class="line">#用户只能访问限制的目录</div><div class="line">chroot_local_user=YES</div><div class="line">#设置固定目录，在结尾添加。如果不添加这一行，各用户对应自己的目录，当然这个文件夹自己建</div><div class="line">local_root=/home/ftp &quot;</div><div class="line">添加用户</div><div class="line">sudo useradd -d /home/ftp -M ftpuser</div><div class="line">sudo passwd ftpuser</div><div class="line">修改文件夹权限</div><div class="line">chmod a-w /home/ftp</div><div class="line">mkdir /home/ftp/data</div><div class="line">vim /etc/pam.d/vsftpd</div><div class="line">注释掉 #auth required pam_shells.so</div><div class="line">sudo service vsftpd restart  //重启生效</div><div class="line">错误:FileZilla - 服务器发回了不可路由的地址，使用服务器地址代替</div><div class="line">解决方式:</div><div class="line">更改FileZilla设置，【编辑】-&gt;【设置】-&gt;【连接】-&gt;【FTP】-&gt;【被动模式】，将“使用服务器的外部IP地址来代替”改为“退回到主动模式”即可。</div><div class="line">如果连接上了不能上传文件 chown ftpuser:ftpuser /home/ftp/</div><div class="line">chmod 777 /home/ftp/data</div></pre></td></tr></table></figure>
+<h3 id="nginx源代码安装的启动"><a href="#nginx源代码安装的启动" class="headerlink" title="nginx源代码安装的启动"></a>nginx源代码安装的启动</h3><p>默认启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$cd /usr/local/nginx //进入nginx目录</div><div class="line">$sbin/nginx //运行启动文件</div></pre></td></tr></table></figure></p>
 <hr>
 <p>备忘</p>
 
@@ -591,7 +591,7 @@ chmod +x *.sh 即可
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -602,7 +602,7 @@ chmod +x *.sh 即可
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -613,7 +613,7 @@ chmod +x *.sh 即可
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -672,7 +672,7 @@ chmod +x *.sh 即可
 <div class="copyright" >
   
   &copy;  2017 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -694,7 +694,7 @@ chmod +x *.sh 即可
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.7k字</span>
+  <span class="post-count">博客全站共10.6k字</span>
 </div>
 
 
