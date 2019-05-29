@@ -387,18 +387,12 @@
           
 
           
-          
-             <span id="/2017/08/25/负载均衡Nginx(一)/" class="leancloud_visitors" data-flag-title="负载均衡Nginx（一）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
+			
+			&nbsp; | &nbsp;
+			<span id="/2017/08/25/负载均衡Nginx(一)/"class="leancloud_visitors" data-flag-title="负载均衡Nginx（一）">
+					 &nbsp;Views
+					</span>
+			
 
           
 
@@ -960,7 +954,7 @@
   <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
 
-  	 <!-- custom analytics part create by xiamo -->
+<!-- custom analytics part create by xiamo -->
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
 <script>AV.initialize("xE9temPkyaBP7ChmferISTyn-gzGzoHsz", "JMfl7vwquUMmJ6wMgegvuahd");</script>
 <script>
@@ -972,13 +966,13 @@ function showTime(Counter) {
 		query.find({
 			success: function(results) {
 				if (results.length == 0) {
-					var content = $(document.getElementById(url)).text() + ': 0';
+					var content = '0 ' + $(document.getElementById(url)).text();
 					$(document.getElementById(url)).text(content);
 					return;
 				}
 				for (var i = 0; i < results.length; i++) {
 					var object = results[i];
-					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
 					$(document.getElementById(url)).text(content);
 				}
 			},
@@ -1004,7 +998,7 @@ function addCount(Counter) {
 				counter.increment("time");
 				counter.save(null, {
 					success: function(counter) {
-						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
 						$(document.getElementById(url)).text(content);
 					},
 					error: function(counter, error) {
@@ -1019,7 +1013,7 @@ function addCount(Counter) {
 				newcounter.save(null, {
 					success: function(newcounter) {
 					    console.log("newcounter.get('time')="+newcounter.get('time'));
-						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
 						$(document.getElementById(url)).text(content);
 					},
 					error: function(newcounter, error) {
@@ -1040,9 +1034,9 @@ $(function() {
 	} else if ($('.post-title-link').length > 1) {
 		showTime(Counter);
 	}
-});
+}); 
 </script>
-  	
+
 
 </body>
 </html>
